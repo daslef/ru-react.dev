@@ -17,28 +17,25 @@ import cn from 'classnames';
 import NextLink from 'next/link';
 
 import ButtonLink from '../ButtonLink';
-import {IconRestart} from '../Icon/IconRestart';
-import BlogCard from 'components/MDX/BlogCard';
-import {IconChevron} from 'components/Icon/IconChevron';
-import {IconSearch} from 'components/Icon/IconSearch';
-import {Logo} from 'components/Logo';
+import { IconRestart } from '../Icon/IconRestart';
+import { IconSearch } from 'components/Icon/IconSearch';
+import { Logo } from 'components/Logo';
 import Link from 'components/MDX/Link';
 import CodeBlock from 'components/MDX/CodeBlock';
-import {ExternalLink} from 'components/ExternalLink';
-import sidebarBlog from '../../sidebarBlog.json';
+import { ExternalLink } from 'components/ExternalLink';
 import * as React from 'react';
 import Image from 'next/image';
 
-function Section({children, background = null}) {
+function Section({ children, background = null }) {
   return (
     <div
       className={cn(
         'mx-auto flex flex-col w-full',
         background === null && 'max-w-7xl',
         background === 'left-card' &&
-          'bg-gradient-left dark:bg-gradient-left-dark border-t border-primary/10 dark:border-primary-dark/10 ',
+        'bg-gradient-left dark:bg-gradient-left-dark border-t border-primary/10 dark:border-primary-dark/10 ',
         background === 'right-card' &&
-          'bg-gradient-right dark:bg-gradient-right-dark border-t border-primary/5 dark:border-primary-dark/5'
+        'bg-gradient-right dark:bg-gradient-right-dark border-t border-primary/5 dark:border-primary-dark/5'
       )}
       style={{
         contain: 'content',
@@ -50,7 +47,7 @@ function Section({children, background = null}) {
   );
 }
 
-function Header({children}) {
+function Header({ children }) {
   return (
     <h2 className="leading-xl font-display text-primary dark:text-primary-dark font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl lg:max-w-xl">
       {children}
@@ -58,7 +55,7 @@ function Header({children}) {
   );
 }
 
-function Para({children}) {
+function Para({ children }) {
   return (
     <p className="max-w-3xl mx-auto text-lg lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
       {children}
@@ -66,7 +63,7 @@ function Para({children}) {
   );
 }
 
-function Center({children}) {
+function Center({ children }) {
   return (
     <div className="px-5 lg:px-0 max-w-4xl lg:text-center text-white text-opacity-80 flex flex-col items-center justify-center">
       {children}
@@ -74,7 +71,7 @@ function Center({children}) {
   );
 }
 
-function FullBleed({children}) {
+function FullBleed({ children }) {
   return (
     <div className="max-w-7xl mx-auto flex flex-col w-full">{children}</div>
   );
@@ -101,17 +98,6 @@ function CurrentTime() {
   return <span suppressHydrationWarning>{currentTime}</span>;
 }
 
-const blogSidebar = sidebarBlog.routes[1];
-if (blogSidebar.path !== '/blog') {
-  throw Error('Could not find the blog route in sidebarBlog.json');
-}
-const recentPosts = blogSidebar.routes.slice(0, 4).map((entry) => ({
-  title: entry.titleForHomepage,
-  icon: entry.icon,
-  date: entry.date,
-  url: entry.path,
-}));
-
 export function HomeContent() {
   return (
     <>
@@ -136,37 +122,18 @@ export function HomeContent() {
             React
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            The library for web and native user interfaces
+            Библиотека для создания нативных и веб-интерфейсов
           </p>
-          <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
-            <ButtonLink
-              href={'/learn'}
-              type="primary"
-              size="lg"
-              className="w-full sm:w-auto justify-center"
-              label="Learn React">
-              Learn React
-            </ButtonLink>
-            <ButtonLink
-              href={'/reference/react'}
-              type="secondary"
-              size="lg"
-              className="w-full sm:w-auto justify-center"
-              label="API Reference">
-              API Reference
-            </ButtonLink>
-          </div>
         </div>
 
         <Section background="left-card">
           <Center>
-            <Header>Create user interfaces from components</Header>
+            <Header>Компонентный подход к созданию UI</Header>
             <Para>
-              React lets you build user interfaces out of individual pieces
-              called components. Create your own React components like{' '}
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, and{' '}
-              <Code>Video</Code>. Then combine them into entire screens, pages,
-              and apps.
+              React позволяет создавать UI из отдельных блоков,
+              называемых компонентами. Создавай свои React-компоненты, такие как{' '}
+              <Code>Thumbnail</Code>, <Code>LikeButton</Code> или{' '}
+              <Code>Video</Code>, а затем собирай из них экраны, страницы и приложения.
             </Para>
           </Center>
           <FullBleed>
@@ -174,22 +141,21 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Whether you work on your own or with thousands of other
-              developers, using React feels the same. It is designed to let you
-              seamlessly combine components written by independent people,
-              teams, and organizations.
+              Неважно, работаешь ли ты в одиночку или коллаборируешься с тысячами других
+              разработчиков. React позволит тебе бесшовно сочетать компоненты,
+              созданные другими людьми, командами и организациями.
             </Para>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
-            <Header>Write components with code and markup</Header>
+            <Header>Компоненты с логикой и разметкой</Header>
             <Para>
-              React components are JavaScript functions. Want to show some
-              content conditionally? Use an <Code>if</Code> statement.
-              Displaying a list? Try array <Code>map()</Code>. Learning React is
-              learning programming.
+              React-компоненты это всего лишь функции JavaScript. Хочешь отобразить
+              элемент только при определенных условиях? Используй конструкцию
+              <Code>if</Code>. Нужно отрисовать список? Попробуй метод массива
+              <Code>map()</Code>.
             </Para>
           </Center>
           <FullBleed>
@@ -197,22 +163,21 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              This markup syntax is called JSX. It is a JavaScript syntax
-              extension popularized by React. Putting JSX markup close to
-              related rendering logic makes React components easy to create,
-              maintain, and delete.
+              В этом коде используется JSX - расширение над синтаксисом JavaScript,
+              предлагаемое React. Совмещая разметку и соответствующую логику отрисовки,
+              JSX упрощает создание, поддержку и удаление компонентов.
             </Para>
           </Center>
         </Section>
 
         <Section background="left-card">
           <Center>
-            <Header>Add interactivity wherever you need it</Header>
+            <Header>Интерактивность</Header>
             <Para>
-              React components receive data and return what should appear on the
-              screen. You can pass them new data in response to an interaction,
-              like when the user types into an input. React will then update the
-              screen to match the new data.
+              Компоненты получают данные и возвращают результат, готовый к
+              отображению на экране. Ты можешь передать в компонент новые
+              данные в ответ на пользовательские действия, например, заполнение
+              поля ввода, и React перерисует компонент в соответствие с ними.
             </Para>
           </Center>
           <FullBleed>
@@ -220,32 +185,22 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              You don’t have to build your whole page in React. Add React to
-              your existing HTML page, and render interactive React components
-              anywhere on it.
+              Не обязательно писать на React всю страницу целиком. Можно
+              добавить компоненты React к существующей HTML-странице.
             </Para>
-            <div className="flex justify-start w-full lg:justify-center">
-              <CTA
-                color="gray"
-                icon="code"
-                href="/learn/add-react-to-an-existing-project">
-                Add React to your page
-              </CTA>
-            </div>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
             <Header>
-              Go full-stack <br className="hidden lg:inline" />
-              with a framework
+              Этого мало? Изучи фреймворки
             </Header>
             <Para>
-              React is a library. It lets you put components together, but it
-              doesn’t prescribe how to do routing and data fetching. To build an
-              entire app with React, we recommend a full-stack React framework
-              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
+              React - это библиотека для создания UI. Здесь нет
+              готовых решений для роутинга или работы с внешними API.
+              Для этих целей рекомендуем использовать один из
+              React-фреймворков, например, <Link href="https://nextjs.org">Next.js</Link> или{' '}
               <Link href="https://remix.run">Remix</Link>.
             </Para>
           </Center>
@@ -254,30 +209,21 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              React is also an architecture. Frameworks that implement it let
-              you fetch data in asynchronous components that run on the server
-              or even during the build. Read data from a file or a database, and
-              pass it down to your interactive components.
+              Фреймворки, поддерживающие React, позволяют получать данные в
+              асинхронных компонентах, размещенных на сервере, или даже во
+              время билда. С их помощью ты можешь прочитать данные из файла
+              или базы данных и передать их в интерактивные компоненты.
             </Para>
-            <div className="flex justify-start w-full lg:justify-center">
-              <CTA
-                color="gray"
-                icon="framework"
-                href="/learn/start-a-new-react-project">
-                Get started with a framework
-              </CTA>
-            </div>
           </Center>
         </Section>
         <Section background="left-card">
           <div className="mx-auto flex flex-col w-full">
             <div className="mx-auto max-w-4xl lg:text-center items-center px-5 flex flex-col">
-              <Header>Use the best from every platform</Header>
+              <Header>Бери лучшее от каждой платформы</Header>
               <Para>
-                People love web and native apps for different reasons. React
-                lets you build both web apps and native apps using the same
-                skills. It leans upon each platform’s unique strengths to let
-                your interfaces feel just right on every platform.
+                Кому-то больше нравятся веб-приложения, кому-то нативные.
+                На React ты можешь создавать приложения под обе платформы,
+                используя их сильные стороны, по единым принципам.
               </Para>
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row mt-16 mb-20 lg:mb-28 px-5 gap-20 lg:gap-5">
@@ -291,15 +237,13 @@ export function HomeContent() {
                     <div className="bg-wash relative h-14 w-full" />
                     <div className="relative flex items-start justify-center flex-col flex-1 pb-16 pt-5 gap-3 px-5 lg:px-10 lg:pt-8">
                       <h4 className="leading-tight text-primary font-semibold text-3xl lg:text-4xl">
-                        Stay true to the web
+                        Оставайся верен Web
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
-                        People expect web app pages to load fast. On the server,
-                        React lets you start streaming HTML while you’re still
-                        fetching data, progressively filling in the remaining
-                        content before any JavaScript code loads. On the client,
-                        React can use standard web APIs to keep your UI
-                        responsive even in the middle of rendering.
+                        Пользователи хотят, чтобы страницы загружались быстро.
+                        React позволяет начать передачу HTML еще до окончания
+                        загрузки данных, прогрессивно дополняя его, а UI остается
+                        интерактивным даже по ходу отрисовки.
                       </p>
                     </div>
                   </div>
@@ -377,21 +321,20 @@ export function HomeContent() {
                       </div>
                       <div className="flex flex-col items-start justify-center pt-0 gap-3 px-2.5 lg:pt-8 lg:px-8">
                         <h4 className="leading-tight text-primary dark:text-primary-dark font-semibold text-3xl lg:text-4xl">
-                          Go truly native
+                          Или создавай Native
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          People expect native apps to look and feel like their
-                          platform.{' '}
+                          Такие приложения должны выглядеть и работать согласовано
+                          с операционной системой.{' '}
+                          Решения{' '}
                           <Link href="https://reactnative.dev">
                             React Native
                           </Link>{' '}
-                          and{' '}
+                          и{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-                          let you build apps in React for Android, iOS, and
-                          more. They look and feel native because their UIs{' '}
-                          <i>are</i> truly native. It’s not a web view—your
-                          React components render real Android and iOS views
-                          provided by the platform.
+                          позволяют создавать на React приложения для Android, iOS, и
+                          не только - пользовательский интерфейс будет отрисован
+                          средствами выбранной платформы.
                         </p>
                       </div>
                     </div>
@@ -401,70 +344,9 @@ export function HomeContent() {
             </div>
             <div className="px-5 lg:px-0 max-w-4xl mx-auto lg:text-center text-secondary dark:text-secondary-dark">
               <Para>
-                With React, you can be a web <i>and</i> a native developer. Your
-                team can ship to many platforms without sacrificing the user
-                experience. Your organization can bridge the platform silos, and
-                form teams that own entire features end-to-end.
+                Используя React, твоя команда сможет доставлять продукт сразу
+                на несколько платформ, не теряя в пользовательском опыте.
               </Para>
-              <div className="flex justify-start w-full lg:justify-center">
-                <CTA color="gray" icon="native" href="https://reactnative.dev/">
-                  Build for native platforms
-                </CTA>
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        <Section background="right-card">
-          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
-            <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
-              <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
-                <Header>Upgrade when the future is ready</Header>
-                <Para>
-                  React approaches changes with care. Every React commit is
-                  tested on business-critical surfaces with over a billion
-                  users. Over 100,000 React components at Meta help validate
-                  every migration strategy.
-                </Para>
-                <div className="order-last pt-5">
-                  <Para>
-                    The React team is always researching how to improve React.
-                    Some research takes years to pay off. React has a high bar
-                    for taking a research idea into production. Only proven
-                    approaches become a part of React.
-                  </Para>
-                  <div className="hidden lg:flex justify-start w-full">
-                    <CTA color="gray" icon="news" href="/blog">
-                      Read more React news
-                    </CTA>
-                  </div>
-                </div>
-              </div>
-              <div className="w-full lg:w-6/12">
-                <p className="uppercase tracking-wide font-bold text-sm text-tertiary dark:text-tertiary-dark flex flex-row gap-2 items-center mt-5 lg:-mt-2 w-full">
-                  <IconChevron />
-                  Latest React News
-                </p>
-                <div className="flex-col sm:flex-row flex-wrap flex gap-5 text-start my-5">
-                  <div className="flex-1 min-w-[40%] text-start">
-                    <BlogCard {...recentPosts[0]} />
-                  </div>
-                  <div className="flex-1 min-w-[40%] text-start">
-                    <BlogCard {...recentPosts[1]} />
-                  </div>
-                  <div className="flex-1 min-w-[40%] text-start">
-                    <BlogCard {...recentPosts[2]} />
-                  </div>
-                  <div className="hidden sm:flex-1 sm:inline">
-                    <BlogCard {...recentPosts[3]} />
-                  </div>
-                </div>
-                <div className="flex lg:hidden justify-start w-full">
-                  <CTA color="gray" icon="news" href="/blog">
-                    Read more React news
-                  </CTA>
-                </div>
-              </div>
             </div>
           </div>
         </Section>
@@ -474,53 +356,18 @@ export function HomeContent() {
             <div className="mx-auto flex flex-col max-w-4xl">
               <Center>
                 <Header>
-                  Join a community <br className="hidden lg:inline" />
-                  of millions
+                  Присоединяйся к сообществу
                 </Header>
                 <Para>
-                  You’re not alone. Two million developers from all over the
-                  world visit the React docs every month. React is something
-                  that people and teams can agree on.
+                  React - это больше чем библиотека, архитектура или экосистема.
+                  React - это сообщество. Здесь встречаются разработчики и дизайнеры,
+                  начинающие специалисты и эксперты, люди науки и творчества,
+                  преподаватели и студенты. React позволяет создавать пользовательские
+                  интерфейсы сообща.
                 </Para>
               </Center>
             </div>
             <CommunityGallery />
-            <div className="mx-auto flex flex-col max-w-4xl">
-              <Center>
-                <Para>
-                  This is why React is more than a library, an architecture, or
-                  even an ecosystem. React is a community. It’s a place where
-                  you can ask for help, find opportunities, and meet new
-                  friends. You will meet both developers and designers,
-                  beginners and experts, researchers and artists, teachers and
-                  students. Our backgrounds may be very different, but React
-                  lets us all create user interfaces together.
-                </Para>
-              </Center>
-            </div>
-          </div>
-
-          <div className="mt-20 px-5 lg:px-0 mb-6 max-w-4xl text-center text-opacity-80">
-            <div className="uwu-visible flex justify-center">
-              <img
-                alt="logo by @sawaratsuki1004"
-                title="logo by @sawaratsuki1004"
-                className="uwu-visible mb-10 lg:mb-8 h-24 lg:h-32"
-                src="/images/uwu.png"
-              />
-            </div>
-            <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
-            <Header>
-              Welcome to the <br className="hidden lg:inline" />
-              React community
-            </Header>
-            <ButtonLink
-              href={'/learn'}
-              type="primary"
-              size="lg"
-              label="Take the Tutorial">
-              Get Started
-            </ButtonLink>
           </div>
         </Section>
       </div>
@@ -528,143 +375,6 @@ export function HomeContent() {
   );
 }
 
-function CTA({children, icon, href}) {
-  let Tag;
-  let extraProps;
-  if (href.startsWith('https://')) {
-    Tag = ExternalLink;
-  } else {
-    Tag = NextLink;
-    extraProps = {legacyBehavior: false};
-  }
-  return (
-    <Tag
-      {...extraProps}
-      href={href}
-      className="focus:outline-none focus-visible:outline focus-visible:outline-link focus:outline-offset-2 focus-visible:dark:focus:outline-link-dark group cursor-pointer w-auto justify-center inline-flex font-bold items-center mt-10 outline-none hover:bg-gray-40/5 active:bg-gray-40/10 hover:dark:bg-gray-60/5 active:dark:bg-gray-60/10 leading-tight hover:bg-opacity-80 text-lg py-2.5 rounded-full px-4 sm:px-6 ease-in-out shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark text-primary dark:text-primary-dark">
-      {icon === 'native' && (
-        <svg
-          className="me-2.5 text-primary dark:text-primary-dark"
-          fill="none"
-          width="24"
-          height="24"
-          viewBox="0 0 72 72"
-          aria-hidden="true">
-          <g clipPath="url(#clip0_8_10998)">
-            <path
-              d="M54.0001 15H18.0001C16.3432 15 15.0001 16.3431 15.0001 18V42H33V48H12.9567L9.10021 57L24.0006 57C24.0006 55.3431 25.3437 54 27.0006 54H33V57.473C33 59.3786 33.3699 61.2582 34.0652 63H9.10021C4.79287 63 1.88869 58.596 3.5852 54.6368L9.0001 42V18C9.0001 13.0294 13.0295 9 18.0001 9H54.0001C58.9707 9 63.0001 13.0294 63.0001 18V25.4411C62.0602 25.0753 61.0589 24.8052 60.0021 24.6458C59.0567 24.5032 58.0429 24.3681 57.0001 24.2587V18C57.0001 16.3431 55.6569 15 54.0001 15Z"
-              fill="currentColor"
-            />
-            <path
-              d="M48 42C48 40.3431 49.3431 39 51 39H54C55.6569 39 57 40.3431 57 42C57 43.6569 55.6569 45 54 45H51C49.3431 45 48 43.6569 48 42Z"
-              fill="currentColor"
-            />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M45.8929 30.5787C41.8093 31.1947 39 34.8257 39 38.9556V57.473C39 61.6028 41.8093 65.2339 45.8929 65.8499C48.0416 66.174 50.3981 66.4286 52.5 66.4286C54.6019 66.4286 56.9584 66.174 59.1071 65.8499C63.1907 65.2339 66 61.6028 66 57.473V38.9556C66 34.8258 63.1907 31.1947 59.1071 30.5787C56.9584 30.2545 54.6019 30 52.5 30C50.3981 30 48.0416 30.2545 45.8929 30.5787ZM60 57.473V38.9556C60 37.4615 59.0438 36.637 58.2121 36.5116C56.2014 36.2082 54.1763 36 52.5 36C50.8237 36 48.7986 36.2082 46.7879 36.5116C45.9562 36.637 45 37.4615 45 38.9556V57.473C45 58.9671 45.9562 59.7916 46.7879 59.917C48.7986 60.2203 50.8237 60.4286 52.5 60.4286C54.1763 60.4286 56.2014 60.2203 58.2121 59.917C59.0438 59.7916 60 58.9671 60 57.473Z"
-              fill="currentColor"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_8_10998">
-              <rect width="72" height="72" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-      )}
-      {icon === 'framework' && (
-        <svg
-          className="me-2.5 text-primary dark:text-primary-dark"
-          fill="none"
-          width="24"
-          height="24"
-          viewBox="0 0 72 72"
-          aria-hidden="true">
-          <g clipPath="url(#clip0_10_21081)">
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M44.9136 29.0343C46.8321 26.9072 48 24.09 48 21C48 14.3726 42.6274 9 36 9C29.3726 9 24 14.3726 24 21C24 24.0904 25.1682 26.9079 27.0871 29.0351L21.0026 39.3787C20.0429 39.1315 19.0368 39 18 39C11.3726 39 6 44.3726 6 51C6 57.6274 11.3726 63 18 63C23.5915 63 28.2898 59.1757 29.6219 54H42.3781C43.7102 59.1757 48.4085 63 54 63C60.6274 63 66 57.6274 66 51C66 44.3726 60.6274 39 54 39C52.9614 39 51.9537 39.1319 50.9926 39.38L44.9136 29.0343ZM42 21C42 24.3137 39.3137 27 36 27C32.6863 27 30 24.3137 30 21C30 17.6863 32.6863 15 36 15C39.3137 15 42 17.6863 42 21ZM39.9033 32.3509C38.6796 32.7716 37.3665 33 36 33C34.6338 33 33.321 32.7717 32.0975 32.3512L26.2523 42.288C27.8635 43.8146 29.0514 45.7834 29.6219 48H42.3781C42.9482 45.785 44.1348 43.8175 45.7441 42.2913L39.9033 32.3509ZM54 57C50.6863 57 48 54.3137 48 51C48 47.6863 50.6863 45 54 45C57.3137 45 60 47.6863 60 51C60 54.3137 57.3137 57 54 57ZM24 51C24 47.6863 21.3137 45 18 45C14.6863 45 12 47.6863 12 51C12 54.3137 14.6863 57 18 57C21.3137 57 24 54.3137 24 51Z"
-              fill="currentColor"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_10_21081">
-              <rect width="72" height="72" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-      )}
-      {icon === 'code' && (
-        <svg
-          className="me-2.5 text-primary dark:text-primary-dark"
-          fill="none"
-          width="24"
-          height="24"
-          viewBox="0 0 72 72"
-          aria-hidden="true">
-          <g clipPath="url(#clip0_8_9064)">
-            <path
-              d="M44.7854 22.1142C45.4008 20.5759 44.6525 18.83 43.1142 18.2146C41.5758 17.5993 39.8299 18.3475 39.2146 19.8859L27.2146 49.8859C26.5992 51.4242 27.3475 53.1702 28.8858 53.7855C30.4242 54.4008 32.1701 53.6526 32.7854 52.1142L44.7854 22.1142Z"
-              fill="currentColor"
-            />
-            <path
-              d="M9.87868 38.1214C8.70711 36.9498 8.70711 35.0503 9.87868 33.8787L18.8787 24.8787C20.0503 23.7072 21.9497 23.7072 23.1213 24.8787C24.2929 26.0503 24.2929 27.9498 23.1213 29.1214L16.2426 36.0001L23.1213 42.8787C24.2929 44.0503 24.2929 45.9498 23.1213 47.1214C21.9497 48.293 20.0503 48.293 18.8787 47.1214L9.87868 38.1214Z"
-              fill="currentColor"
-            />
-            <path
-              d="M62.1213 33.8787L53.1213 24.8787C51.9497 23.7072 50.0503 23.7072 48.8787 24.8787C47.7071 26.0503 47.7071 27.9498 48.8787 29.1214L55.7574 36.0001L48.8787 42.8787C47.7071 44.0503 47.7071 45.9498 48.8787 47.1214C50.0503 48.293 51.9497 48.293 53.1213 47.1214L62.1213 38.1214C63.2929 36.9498 63.2929 35.0503 62.1213 33.8787Z"
-              fill="currentColor"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_8_9064">
-              <rect width="72" height="72" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
-      )}
-      {icon === 'news' && (
-        <svg
-          className="me-2.5 text-primary dark:text-primary-dark"
-          fill="none"
-          width="24"
-          height="24"
-          viewBox="0 0 72 72"
-          aria-hidden="true">
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M12.7101 56.3758C13.0724 56.7251 13.6324 57 14.3887 57H57.6113C58.3676 57 58.9276 56.7251 59.2899 56.3758C59.6438 56.0346 59.8987 55.5407 59.9086 54.864C59.9354 53.022 59.9591 50.7633 59.9756 48H12.0244C12.0409 50.7633 12.0645 53.022 12.0914 54.864C12.1013 55.5407 12.3562 56.0346 12.7101 56.3758ZM12.0024 42H59.9976C59.9992 41.0437 60 40.0444 60 39C60 29.5762 59.9327 22.5857 59.8589 17.7547C59.8359 16.2516 58.6168 15 56.9938 15L15.0062 15C13.3832 15 12.1641 16.2516 12.1411 17.7547C12.0673 22.5857 12 29.5762 12 39C12 40.0444 12.0008 41.0437 12.0024 42ZM65.8582 17.6631C65.7843 12.8227 61.8348 9 56.9938 9H15.0062C10.1652 9 6.21572 12.8227 6.1418 17.6631C6.06753 22.5266 6 29.5477 6 39C6 46.2639 6.03988 51.3741 6.09205 54.9515C6.15893 59.537 9.80278 63 14.3887 63H57.6113C62.1972 63 65.8411 59.537 65.9079 54.9515C65.9601 51.3741 66 46.2639 66 39C66 29.5477 65.9325 22.5266 65.8582 17.6631ZM39 21C37.3431 21 36 22.3431 36 24C36 25.6569 37.3431 27 39 27H51C52.6569 27 54 25.6569 54 24C54 22.3431 52.6569 21 51 21H39ZM36 33C36 31.3431 37.3431 30 39 30H51C52.6569 30 54 31.3431 54 33C54 34.6569 52.6569 36 51 36H39C37.3431 36 36 34.6569 36 33ZM24 33C27.3137 33 30 30.3137 30 27C30 23.6863 27.3137 21 24 21C20.6863 21 18 23.6863 18 27C18 30.3137 20.6863 33 24 33Z"
-            fill="currentColor"
-          />
-        </svg>
-      )}
-      {children}
-      <svg
-        className="text-primary dark:text-primary-dark rtl:rotate-180"
-        fill="none"
-        width="24"
-        height="24"
-        viewBox="0 0 72 72"
-        aria-hidden="true">
-        <path
-          className="transition-transform ease-in-out translate-x-[-8px] group-hover:translate-x-[8px]"
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M40.0001 19.0245C41.0912 17.7776 42.9864 17.6513 44.2334 18.7423L58.9758 33.768C59.6268 34.3377 60.0002 35.1607 60.0002 36.0257C60.0002 36.8908 59.6268 37.7138 58.9758 38.2835L44.2335 53.3078C42.9865 54.3988 41.0913 54.2725 40.0002 53.0256C38.9092 51.7786 39.0355 49.8835 40.2824 48.7924L52.4445 36.0257L40.2823 23.2578C39.0354 22.1667 38.9091 20.2714 40.0001 19.0245Z"
-          fill="currentColor"
-        />
-        <path
-          className="opacity-0 ease-in-out transition-opacity group-hover:opacity-100"
-          d="M60 36.0273C60 37.6842 58.6569 39.0273 57 39.0273H15C13.3431 39.0273 12 37.6842 12 36.0273C12 34.3704 13.3431 33.0273 15 33.0273H57C58.6569 33.0273 60 34.3704 60 36.0273Z"
-          fill="currentColor"
-        />
-      </svg>
-    </Tag>
-  );
-}
 
 const reactConf2021Cover = '/images/home/conf2021/cover.svg';
 const reactConf2019Cover = '/images/home/conf2019/cover.svg';
@@ -777,10 +487,10 @@ function CommunityGallery() {
   );
 }
 
-const CommunityImages = memo(function CommunityImages({isLazy}) {
+const CommunityImages = memo(function CommunityImages({ isLazy }) {
   return (
     <>
-      {communityImages.map(({src, alt}, i) => (
+      {communityImages.map(({ src, alt }, i) => (
         <div
           key={i}
           className={cn(
@@ -893,14 +603,14 @@ function useCodeHover(areas) {
 }
 
 const example1Areas = new Map([
-  [2, {name: 'Video'}],
-  [3, {name: 'Thumbnail'}],
-  [4, {name: 'a'}],
-  [5, {name: 'h3'}],
-  [6, {name: 'p'}],
-  [7, {name: 'a'}],
-  [8, {name: 'LikeButton'}],
-  [9, {name: 'Video'}],
+  [2, { name: 'Video' }],
+  [3, { name: 'Thumbnail' }],
+  [4, { name: 'a' }],
+  [5, { name: 'h3' }],
+  [6, { name: 'p' }],
+  [7, { name: 'a' }],
+  [8, { name: 'LikeButton' }],
+  [9, { name: 'Video' }],
 ]);
 
 function Example1() {
@@ -948,10 +658,10 @@ function Example1() {
 }
 
 const example2Areas = new Map([
-  [8, {name: 'VideoList'}],
-  [9, {name: 'h2'}],
-  [11, {name: 'Video', lines: [11]}],
-  [13, {name: 'VideoList'}],
+  [8, { name: 'VideoList' }],
+  [9, { name: 'h2' }],
+  [11, { name: 'Video', lines: [11] }],
+  [13, { name: 'VideoList' }],
 ]);
 
 function Example2() {
@@ -1017,14 +727,14 @@ function Example2() {
 }
 
 const example3Areas = new Map([
-  [6, {name: 'SearchableVideoList'}],
-  [7, {name: 'SearchInput', lines: [7, 8, 9]}],
-  [8, {name: 'SearchInput', lines: [7, 8, 9]}],
-  [9, {name: 'SearchInput', lines: [7, 8, 9]}],
-  [10, {name: 'VideoList', lines: [10, 11, 12]}],
-  [11, {name: 'VideoList', lines: [10, 11, 12]}],
-  [12, {name: 'VideoList', lines: [10, 11, 12]}],
-  [13, {name: 'SearchableVideoList'}],
+  [6, { name: 'SearchableVideoList' }],
+  [7, { name: 'SearchInput', lines: [7, 8, 9] }],
+  [8, { name: 'SearchInput', lines: [7, 8, 9] }],
+  [9, { name: 'SearchInput', lines: [7, 8, 9] }],
+  [10, { name: 'VideoList', lines: [10, 11, 12] }],
+  [11, { name: 'VideoList', lines: [10, 11, 12] }],
+  [12, { name: 'VideoList', lines: [10, 11, 12] }],
+  [13, { name: 'SearchableVideoList' }],
 ]);
 
 function Example3() {
@@ -1120,12 +830,12 @@ function SearchableVideoList({ videos }) {
 }
 
 const example4Areas = new Map([
-  [6, {name: 'ConferenceLayout'}],
-  [7, {name: 'Suspense'}],
-  [8, {name: 'SearchableVideoList'}],
-  [9, {name: 'Suspense'}],
-  [10, {name: 'ConferenceLayout'}],
-  [17, {name: 'SearchableVideoList'}],
+  [6, { name: 'ConferenceLayout' }],
+  [7, { name: 'Suspense' }],
+  [8, { name: 'SearchableVideoList' }],
+  [9, { name: 'Suspense' }],
+  [10, { name: 'ConferenceLayout' }],
+  [17, { name: 'SearchableVideoList' }],
 ]);
 
 function Example4() {
@@ -1171,7 +881,7 @@ async function Talks({ confId }) {
         </CodeBlock>
       }
       right={
-        <NavContext.Provider value={{slug, navigate}}>
+        <NavContext.Provider value={{ slug, navigate }}>
           <BrowserChrome
             domain="example.com"
             path={'confs/' + slug}
@@ -1183,7 +893,7 @@ async function Talks({ confId }) {
               contentMarginTop="56px"
               height="35rem">
               <Suspense fallback={null}>
-                <div style={{animation: animate ? 'fadein 200ms' : null}}>
+                <div style={{ animation: animate ? 'fadein 200ms' : null }}>
                   <link rel="preload" href={reactConf2019Cover} as="image" />
                   <link rel="preload" href={reactConf2021Cover} as="image" />
                   <ConferencePage slug={slug} />
@@ -1240,10 +950,10 @@ function ExamplePanel({
         'max-w-3xl rounded-2xl mx-auto text-secondary leading-normal bg-white overflow-hidden w-full overflow-y-auto',
         noShadow ? 'shadow-none' : 'shadow-nav dark:shadow-nav-dark'
       )}
-      style={{height}}>
+      style={{ height }}>
       <div
         className={noPadding ? 'p-0' : 'p-4'}
-        style={{contentVisibility: 'auto', marginTop: contentMarginTop}}>
+        style={{ contentVisibility: 'auto', marginTop: contentMarginTop }}>
         {children}
       </div>
     </div>
@@ -1252,7 +962,7 @@ function ExamplePanel({
 
 const NavContext = createContext(null);
 
-function BrowserChrome({children, hasPulse, hasRefresh, domain, path}) {
+function BrowserChrome({ children, hasPulse, hasRefresh, domain, path }) {
   const [restartId, setRestartId] = useState(0);
   const isPulsing = hasPulse && restartId === 0;
   const [shouldAnimatePulse, setShouldAnimatePulse] = useState(false);
@@ -1351,7 +1061,7 @@ function BrowserChrome({children, hasPulse, hasRefresh, domain, path}) {
   );
 }
 
-function ConferencePage({slug}) {
+function ConferencePage({ slug }) {
   const conf = use(fetchConf(slug));
   return (
     <ConferenceLayout conf={conf}>
@@ -1415,12 +1125,12 @@ function TalksLoading() {
   );
 }
 
-function Talks({confId}) {
+function Talks({ confId }) {
   const videos = use(fetchTalks(confId));
   return <SearchableVideoList videos={videos} />;
 }
 
-function SearchableVideoList({videos}) {
+function SearchableVideoList({ videos }) {
   const [searchText, setSearchText] = useState('');
   const foundVideos = filterVideos(videos, searchText);
   return (
@@ -1450,7 +1160,7 @@ function filterVideos(videos, query) {
   });
 }
 
-function VideoList({videos, emptyHeading}) {
+function VideoList({ videos, emptyHeading }) {
   let heading = emptyHeading;
   const count = videos.length;
   if (count > 0) {
@@ -1473,7 +1183,7 @@ function VideoList({videos, emptyHeading}) {
   );
 }
 
-function SearchInput({value, onChange}) {
+function SearchInput({ value, onChange }) {
   const id = useId();
   return (
     <form
@@ -1500,8 +1210,8 @@ function SearchInput({value, onChange}) {
   );
 }
 
-function ConferenceLayout({conf, children}) {
-  const {slug, navigate} = useContext(NavContext);
+function ConferenceLayout({ conf, children }) {
+  const { slug, navigate } = useContext(NavContext);
   const [isPending, startTransition] = useTransition();
   return (
     <div
@@ -1547,7 +1257,7 @@ function ConferenceLayout({conf, children}) {
   );
 }
 
-function Cover({background, children}) {
+function Cover({ background, children }) {
   return (
     <div className="h-40 overflow-hidden relative items-center flex">
       <div className="absolute inset-0 px-4 py-2 flex items-end bg-gradient-to-t from-black/40 via-black/0">
@@ -1564,7 +1274,7 @@ function Cover({background, children}) {
   );
 }
 
-function Video({video}) {
+function Video({ video }) {
   return (
     <div className="flex flex-row items-center gap-3" data-hover="Video">
       <Thumbnail video={video} />
@@ -1591,7 +1301,7 @@ function Video({video}) {
   );
 }
 
-function Code({children}) {
+function Code({ children }) {
   return (
     <code
       dir="ltr"
@@ -1601,8 +1311,8 @@ function Code({children}) {
   );
 }
 
-function Thumbnail({video}) {
-  const {image} = video;
+function Thumbnail({ video }) {
+  const { image } = video;
   return (
     <a
       data-hover="Thumbnail"
@@ -1675,7 +1385,7 @@ function ThumbnailPlaceholder() {
 // Unlike local state, this survives videos being filtered.
 const likedVideos = new Set();
 
-function LikeButton({video}) {
+function LikeButton({ video }) {
   const [isLiked, setIsLiked] = useState(() => likedVideos.has(video.id));
   const [animate, setAnimate] = useState(false);
   return (
@@ -1745,7 +1455,7 @@ function LikeButton({video}) {
     </button>
   );
 }
-function SvgContainer({children}) {
+function SvgContainer({ children }) {
   return (
     <svg
       className="w-16 h-16 lg:w-20 lg:h-20 rounded-2xl lg:rounded-3xl shadow-nav bg-wash"
