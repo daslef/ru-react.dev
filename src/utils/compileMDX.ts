@@ -1,5 +1,5 @@
-import {LanguageItem} from 'components/MDX/LanguagesContext';
-import {MDXComponents} from 'components/MDX/MDXComponents';
+import { LanguageItem } from 'components/MDX/LanguagesContext';
+import { MDXComponents } from 'components/MDX/MDXComponents';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // ~~~~ IMPORTANT: BUMP THIS IF YOU CHANGE ANY CODE BELOW ~~~
@@ -9,8 +9,8 @@ const DISK_CACHE_BREAKER = 10;
 export default async function compileMDX(
   mdx: string,
   path: string | string[],
-  params: {[key: string]: any}
-): Promise<{content: string; toc: string; meta: any}> {
+  params: { [key: string]: any }
+): Promise<{ content: string; toc: string; meta: any }> {
   const fs = require('fs');
   const {
     prepareMDX,
@@ -19,7 +19,7 @@ export default async function compileMDX(
   const mdxComponentNames = Object.keys(MDXComponents);
 
   // See if we have a cached output first.
-  const {FileStore, stableHash} = require('metro-cache');
+  const { FileStore, stableHash } = require('metro-cache');
   const store = new FileStore({
     root: process.cwd() + '/node_modules/.cache/react-docs-mdx/',
   });
@@ -33,7 +33,7 @@ export default async function compileMDX(
       mdxComponentNames,
       DISK_CACHE_BREAKER,
       PREPARE_MDX_CACHE_BREAKER,
-      lockfile: fs.readFileSync(process.cwd() + '/yarn.lock', 'utf8'),
+      lockfile: fs.readFileSync(process.cwd() + '/package-lock.json', 'utf8'),
     })
   );
   const cached = await store.get(hash);
@@ -60,8 +60,8 @@ export default async function compileMDX(
       .join('\n');
 
   // Turn the MDX we just read into some JS we can execute.
-  const {remarkPlugins} = require('../../plugins/markdownToHtml');
-  const {compile: compileMdx} = await import('@mdx-js/mdx');
+  const { remarkPlugins } = require('../../plugins/markdownToHtml');
+  const { compile: compileMdx } = await import('@mdx-js/mdx');
   const visit = (await import('unist-util-visit')).default;
   const jsxCode = await compileMdx(mdxWithFakeImports, {
     remarkPlugins: [
@@ -88,7 +88,7 @@ export default async function compileMDX(
       },
     ],
   });
-  const {transform} = require('@babel/core');
+  const { transform } = require('@babel/core');
   const jsCode = await transform(jsxCode, {
     plugins: ['@babel/plugin-transform-modules-commonjs'],
     presets: ['@babel/preset-react'],
@@ -116,7 +116,7 @@ export default async function compileMDX(
   const reactTree = fakeExports.default({});
 
   // Pre-process MDX output and serialize it.
-  let {toc, children} = prepareMDX(reactTree.props.children);
+  let { toc, children } = prepareMDX(reactTree.props.children);
   if (path === 'index') {
     toc = [];
   }
@@ -150,7 +150,7 @@ export default async function compileMDX(
     ) {
       // Remove fake MDX props.
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const {mdxType, originalType, parentName, ...cleanProps} = val.props;
+      const { mdxType, originalType, parentName, ...cleanProps } = val.props;
       return [
         '$r',
         typeof val.type === 'string' ? val.type : mdxType,

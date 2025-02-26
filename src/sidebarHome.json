@@ -73,22 +73,6 @@
     {
       "title": "Server APIs",
       "path": "/reference/react-dom/server"
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
-    },
-    {
-      "title": "React Community",
-      "path": "/community"
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
-    },
-    {
-      "title": "React Blog",
-      "path": "/blog"
     }
   ]
 }

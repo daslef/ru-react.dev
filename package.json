@@ -15,12 +15,9 @@
     "prettier:diff": "yarn nit:source",
     "lint-heading-ids": "node scripts/headingIdLinter.js",
     "fix-headings": "node scripts/headingIdLinter.js --fix",
-    "ci-check": "npm-run-all prettier:diff --parallel lint tsc lint-heading-ids rss",
     "tsc": "tsc --noEmit",
     "start": "next start",
-    "postinstall": "is-ci || husky install .husky",
-    "check-all": "npm-run-all prettier lint:fix tsc rss",
-    "rss": "node scripts/generateRss.js"
+    "check-all": "npm-run-all prettier lint:fix tsc"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "2.13.5",
@@ -74,8 +71,6 @@
     "fs-extra": "^9.0.1",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",
-    "husky": "^7.0.4",
-    "is-ci": "^3.0.1",
     "lint-staged": ">=10",
     "mdast-util-to-string": "^1.1.0",
     "metro-cache": "0.72.2",
@@ -93,7 +88,6 @@
     "remark-unwrap-images": "^2.0.0",
     "retext": "^7.0.1",
     "retext-smartypants": "^4.0.0",
-    "rss": "^1.2.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.7.2",
     "unist-util-visit": "^2.0.3",
@@ -111,5 +105,5 @@
     "*.{js,ts,jsx,tsx,css}": "yarn prettier",
     "src/**/*.md": "yarn fix-headings"
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "npm@10.8.0"
 }

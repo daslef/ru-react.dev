@@ -2,22 +2,21 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Children, useContext, useMemo} from 'react';
+import { Children, useContext, useMemo } from 'react';
 import * as React from 'react';
 import cn from 'classnames';
-import type {HTMLAttributes} from 'react';
+import type { HTMLAttributes } from 'react';
 
 import CodeBlock from './CodeBlock';
-import {CodeDiagram} from './CodeDiagram';
-import {ConsoleBlock, ConsoleLogLine, ConsoleBlockMulti} from './ConsoleBlock';
+import { CodeDiagram } from './CodeDiagram';
+import { ConsoleBlock, ConsoleLogLine, ConsoleBlockMulti } from './ConsoleBlock';
 import ExpandableCallout from './ExpandableCallout';
 import ExpandableExample from './ExpandableExample';
-import {H1, H2, H3, H4, H5} from './Heading';
+import { H1, H2, H3, H4, H5 } from './Heading';
 import InlineCode from './InlineCode';
 import Intro from './Intro';
-import BlogCard from './BlogCard';
 import Link from './Link';
-import {PackageImport} from './PackageImport';
+import { PackageImport } from './PackageImport';
 import Recap from './Recap';
 import Sandpack from './Sandpack';
 import SandpackWithHTMLOutput from './SandpackWithHTMLOutput';
@@ -26,19 +25,18 @@ import DiagramGroup from './DiagramGroup';
 import SimpleCallout from './SimpleCallout';
 import TerminalBlock from './TerminalBlock';
 import YouWillLearnCard from './YouWillLearnCard';
-import {Challenges, Hint, Solution} from './Challenges';
-import {IconNavArrow} from '../Icon/IconNavArrow';
+import { Challenges, Hint, Solution } from './Challenges';
+import { IconNavArrow } from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
-import {TocContext} from './TocContext';
-import type {Toc, TocItem} from './TocContext';
-import {TeamMember} from './TeamMember';
-import {LanguagesContext} from './LanguagesContext';
-import {finishedTranslations} from 'utils/finishedTranslations';
+import { TocContext } from './TocContext';
+import type { Toc, TocItem } from './TocContext';
+import { TeamMember } from './TeamMember';
+import { LanguagesContext } from './LanguagesContext';
 
 import ErrorDecoder from './ErrorDecoder';
-import {IconCanary} from '../Icon/IconCanary';
+import { IconCanary } from '../Icon/IconCanary';
 
-function CodeStep({children, step}: {children: any; step: number}) {
+function CodeStep({ children, step }: { children: any; step: number }) {
   return (
     <span
       data-step={step}
@@ -81,32 +79,32 @@ const UL = (p: HTMLAttributes<HTMLUListElement>) => (
 const Divider = () => (
   <hr className="my-6 block border-b border-t-0 border-border dark:border-border-dark" />
 );
-const Wip = ({children}: {children: React.ReactNode}) => (
+const Wip = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="wip">{children}</ExpandableCallout>
 );
-const Pitfall = ({children}: {children: React.ReactNode}) => (
+const Pitfall = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="pitfall">{children}</ExpandableCallout>
 );
-const Deprecated = ({children}: {children: React.ReactNode}) => (
+const Deprecated = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="deprecated">{children}</ExpandableCallout>
 );
-const Note = ({children}: {children: React.ReactNode}) => (
+const Note = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="note">{children}</ExpandableCallout>
 );
 
-const Canary = ({children}: {children: React.ReactNode}) => (
+const Canary = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="canary">{children}</ExpandableCallout>
 );
 
-const NextMajor = ({children}: {children: React.ReactNode}) => (
+const NextMajor = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="major">{children}</ExpandableCallout>
 );
 
-const RSC = ({children}: {children: React.ReactNode}) => (
+const RSC = ({ children }: { children: React.ReactNode }) => (
   <ExpandableCallout type="rsc">{children}</ExpandableCallout>
 );
 
-const CanaryBadge = ({title}: {title: string}) => (
+const CanaryBadge = ({ title }: { title: string }) => (
   <span
     title={title}
     className={
@@ -120,7 +118,7 @@ const CanaryBadge = ({title}: {title: string}) => (
   </span>
 );
 
-const NextMajorBadge = ({title}: {title: string}) => (
+const NextMajorBadge = ({ title }: { title: string }) => (
   <span
     title={title}
     className={
@@ -130,7 +128,7 @@ const NextMajorBadge = ({title}: {title: string}) => (
   </span>
 );
 
-const RSCBadge = ({title}: {title: string}) => (
+const RSCBadge = ({ title }: { title: string }) => (
   <span
     title={title}
     className={
@@ -140,7 +138,7 @@ const RSCBadge = ({title}: {title: string}) => (
   </span>
 );
 
-const Blockquote = ({children, ...props}: HTMLAttributes<HTMLQuoteElement>) => {
+const Blockquote = ({ children, ...props }: HTMLAttributes<HTMLQuoteElement>) => {
   return (
     <blockquote
       className="mdx-blockquote py-4 px-8 my-8 shadow-inner-border dark:shadow-inner-border-dark bg-highlight dark:bg-highlight-dark bg-opacity-50 rounded-2xl leading-6 flex relative"
@@ -183,7 +181,7 @@ function LearnMore({
   );
 }
 
-function ReadBlogPost({path}: {path: string}) {
+function ReadBlogPost({ path }: { path: string }) {
   return (
     <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
       Read Post
@@ -192,7 +190,7 @@ function ReadBlogPost({path}: {path: string}) {
   );
 }
 
-function Math({children}: {children: any}) {
+function Math({ children }: { children: any }) {
   return (
     <span
       style={{
@@ -204,7 +202,7 @@ function Math({children}: {children: any}) {
   );
 }
 
-function MathI({children}: {children: any}) {
+function MathI({ children }: { children: any }) {
   return (
     <span
       style={{
@@ -280,7 +278,7 @@ function Illustration({
   author: string;
   authorLink: string;
 }) {
-  const {isInBlock} = React.useContext(IllustrationContext);
+  const { isInBlock } = React.useContext(IllustrationContext);
 
   return (
     <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
@@ -288,7 +286,7 @@ function Illustration({
         <img
           src={src}
           alt={alt}
-          style={{maxHeight: 300}}
+          style={{ maxHeight: 300 }}
           className="rounded-lg"
         />
         {caption ? (
@@ -302,7 +300,7 @@ function Illustration({
   );
 }
 
-const isInBlockTrue = {isInBlock: true};
+const isInBlockTrue = { isInBlock: true };
 
 function IllustrationBlock({
   sequential,
@@ -395,7 +393,7 @@ function InlineToc() {
   return <InlineTocItem items={root.children} />;
 }
 
-function InlineTocItem({items}: {items: Array<NestedTocNode>}) {
+function InlineTocItem({ items }: { items: Array<NestedTocNode> }) {
   return (
     <UL>
       {items.map((node) => (
@@ -408,37 +406,6 @@ function InlineTocItem({items}: {items: Array<NestedTocNode>}) {
   );
 }
 
-type TranslationProgress = 'complete' | 'in-progress';
-
-function LanguageList({progress}: {progress: TranslationProgress}) {
-  const allLanguages = React.useContext(LanguagesContext) ?? [];
-  const languages = allLanguages
-    .filter(
-      ({code}) =>
-        code !== 'en' &&
-        (progress === 'complete'
-          ? finishedTranslations.includes(code)
-          : !finishedTranslations.includes(code))
-    )
-    .sort((a, b) => a.enName.localeCompare(b.enName));
-  return (
-    <UL>
-      {languages.map(({code, name, enName}) => {
-        return (
-          <LI key={code}>
-            <Link href={`https://${code}.react.dev/`}>
-              {enName} ({name})
-            </Link>{' '}
-            &mdash;{' '}
-            <Link href={`https://github.com/reactjs/${code}.react.dev`}>
-              Contribute
-            </Link>
-          </LI>
-        );
-      })}
-    </UL>
-  );
-}
 
 function YouTubeIframe(props: any) {
   return (
@@ -456,7 +423,7 @@ function YouTubeIframe(props: any) {
 }
 
 function Image(props: any) {
-  const {alt, ...rest} = props;
+  const { alt, ...rest } = props;
   return <img alt={alt} className="max-w-[calc(min(700px,100%))]" {...rest} />;
 }
 
@@ -475,7 +442,6 @@ export const MDXComponents = {
   hr: Divider,
   a: Link,
   img: Image,
-  BlogCard,
   code: InlineCode,
   pre: CodeBlock,
   CodeDiagram,
@@ -489,10 +455,10 @@ export const MDXComponents = {
   }) => <ExpandableExample {...props} type="DeepDive" />,
   Diagram,
   DiagramGroup,
-  FullWidth({children}: {children: any}) {
+  FullWidth({ children }: { children: any }) {
     return children;
   },
-  MaxWidth({children}: {children: any}) {
+  MaxWidth({ children }: { children: any }) {
     return <div className="max-w-4xl ms-0 2xl:mx-auto">{children}</div>;
   },
   Pitfall,
@@ -502,7 +468,6 @@ export const MDXComponents = {
   IllustrationBlock,
   Intro,
   InlineToc,
-  LanguageList,
   LearnMore,
   Math,
   MathI,

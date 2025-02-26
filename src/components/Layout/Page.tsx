@@ -2,23 +2,22 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Suspense} from 'react';
+import { Suspense } from 'react';
 import * as React from 'react';
-import {useRouter} from 'next/router';
-import {SidebarNav} from './SidebarNav';
-import {Footer} from './Footer';
-import {Toc} from './Toc';
+import { useRouter } from 'next/router';
+import { SidebarNav } from './SidebarNav';
+import { Footer } from './Footer';
+import { Toc } from './Toc';
 // import SocialBanner from '../SocialBanner';
-import {DocsPageFooter} from 'components/DocsFooter';
-import {Seo} from 'components/Seo';
+import { DocsPageFooter } from 'components/DocsFooter';
 import PageHeading from 'components/PageHeading';
-import {getRouteMeta} from './getRouteMeta';
-import {TocContext} from '../MDX/TocContext';
-import {Languages, LanguagesContext} from '../MDX/LanguagesContext';
-import type {TocItem} from 'components/MDX/TocContext';
-import type {RouteItem} from 'components/Layout/getRouteMeta';
-import {HomeContent} from './HomeContent';
-import {TopNav} from './TopNav';
+import { getRouteMeta } from './getRouteMeta';
+import { TocContext } from '../MDX/TocContext';
+import { Languages, LanguagesContext } from '../MDX/LanguagesContext';
+import type { TocItem } from 'components/MDX/TocContext';
+import type { RouteItem } from 'components/Layout/getRouteMeta';
+import { HomeContent } from './HomeContent';
+import { TopNav } from './TopNav';
 import cn from 'classnames';
 import Head from 'next/head';
 
@@ -34,7 +33,7 @@ interface PageProps {
     canary?: boolean;
     description?: string;
   };
-  section: 'learn' | 'reference' | 'community' | 'blog' | 'home' | 'unknown';
+  section: 'learn' | 'reference' | 'home' | 'unknown';
   languages?: Languages | null;
 }
 
@@ -46,9 +45,9 @@ export function Page({
   section,
   languages = null,
 }: PageProps) {
-  const {asPath} = useRouter();
+  const { asPath } = useRouter();
   const cleanedPath = asPath.split(/[\?\#]/)[0];
-  const {route, nextRoute, prevRoute, breadcrumbs, order} = getRouteMeta(
+  const { route, nextRoute, prevRoute, breadcrumbs, order } = getRouteMeta(
     cleanedPath,
     routeTree
   );
@@ -56,7 +55,6 @@ export function Page({
   const canary = meta.canary || false;
   const description = meta.description || route?.description || '';
   const isHomePage = cleanedPath === '/';
-  const isBlogIndex = cleanedPath === '/blog';
 
   let content;
   if (isHomePage) {
@@ -64,10 +62,7 @@ export function Page({
   } else {
     content = (
       <div className="ps-0">
-        <div
-          className={cn(
-            section === 'blog' && 'mx-auto px-0 lg:px-4 max-w-5xl'
-          )}>
+        <div>
           <PageHeading
             title={title}
             canary={canary}
@@ -80,7 +75,6 @@ export function Page({
           <div
             className={cn(
               'max-w-7xl mx-auto',
-              section === 'blog' && 'lg:flex lg:flex-col lg:items-center'
             )}>
             <TocContext.Provider value={toc}>
               <LanguagesContext.Provider value={languages}>
@@ -88,13 +82,11 @@ export function Page({
               </LanguagesContext.Provider>
             </TocContext.Provider>
           </div>
-          {!isBlogIndex && (
-            <DocsPageFooter
-              route={route}
-              nextRoute={nextRoute}
-              prevRoute={prevRoute}
-            />
-          )}
+          <DocsPageFooter
+            route={route}
+            nextRoute={nextRoute}
+            prevRoute={prevRoute}
+          />
         </div>
       </div>
     );
@@ -103,41 +95,14 @@ export function Page({
   let hasColumns = true;
   let showSidebar = true;
   let showToc = true;
-  if (isHomePage || isBlogIndex) {
+  if (isHomePage) {
     hasColumns = false;
     showSidebar = false;
     showToc = false;
-  } else if (section === 'blog') {
-    showToc = false;
-    hasColumns = false;
-    showSidebar = false;
-  }
-
-  let searchOrder;
-  if (section === 'learn' || (section === 'blog' && !isBlogIndex)) {
-    searchOrder = order;
   }
 
   return (
     <>
-      <Seo
-        title={title}
-        titleForTitleTag={meta.titleForTitleTag}
-        isHomePage={isHomePage}
-        image={`/images/og-` + section + '.png'}
-        searchOrder={searchOrder}
-      />
-      {(isHomePage || isBlogIndex) && (
-        <Head>
-          <link
-            rel="alternate"
-            type="application/rss+xml"
-            title="React Blog RSS Feed"
-            href="/rss.xml"
-          />
-        </Head>
-      )}
-      {/*<SocialBanner />*/}
       <TopNav
         section={section}
         routeTree={routeTree}
@@ -146,7 +111,7 @@ export function Page({
       <div
         className={cn(
           hasColumns &&
-            'grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc'
+          'grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc'
         )}>
         {showSidebar && (
           <div className="lg:-mt-16 z-10">

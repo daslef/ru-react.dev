@@ -2,12 +2,11 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Suspense} from 'react';
+import { Suspense } from 'react';
 import * as React from 'react';
 import cn from 'classnames';
-import {Feedback} from '../Feedback';
-import {SidebarRouteTree} from '../Sidebar/SidebarRouteTree';
-import type {RouteItem} from '../getRouteMeta';
+import { SidebarRouteTree } from '../Sidebar/SidebarRouteTree';
+import type { RouteItem } from '../getRouteMeta';
 
 declare global {
   interface Window {
@@ -44,7 +43,7 @@ export default function SidebarNav({
           )}>
           <nav
             role="navigation"
-            style={{'--bg-opacity': '.2'} as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
+            style={{ '--bg-opacity': '.2' } as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
             className="w-full pt-6 scrolling-touch lg:h-auto grow pe-0 lg:pe-5 lg:pb-16 md:pt-4 lg:pt-4 scrolling-gpu">
             {/* No fallback UI so need to be careful not to suspend directly inside. */}
             <Suspense fallback={null}>
@@ -56,9 +55,6 @@ export default function SidebarNav({
             </Suspense>
             <div className="h-20" />
           </nav>
-          <div className="fixed bottom-0 hidden lg:block">
-            <Feedback />
-          </div>
         </aside>
       </div>
     </div>

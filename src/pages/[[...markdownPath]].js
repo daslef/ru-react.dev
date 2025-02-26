@@ -2,19 +2,16 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Fragment, useMemo} from 'react';
-import {useRouter} from 'next/router';
-import {Page} from 'components/Layout/Page';
+import { Fragment, useMemo } from 'react';
+import { useRouter } from 'next/router';
+import { Page } from 'components/Layout/Page';
 import sidebarHome from '../sidebarHome.json';
 import sidebarLearn from '../sidebarLearn.json';
 import sidebarReference from '../sidebarReference.json';
-import sidebarCommunity from '../sidebarCommunity.json';
-import sidebarBlog from '../sidebarBlog.json';
-import {MDXComponents} from 'components/MDX/MDXComponents';
+import { MDXComponents } from 'components/MDX/MDXComponents';
 import compileMDX from 'utils/compileMDX';
-import {generateRssFeed} from '../utils/rss';
 
-export default function Layout({content, toc, meta, languages}) {
+export default function Layout({ content, toc, meta, languages }) {
   const parsedContent = useMemo(
     () => JSON.parse(content, reviveNodeOnClient),
     [content]
@@ -33,12 +30,6 @@ export default function Layout({content, toc, meta, languages}) {
     case 'reference':
       routeTree = sidebarReference;
       break;
-    case 'community':
-      routeTree = sidebarCommunity;
-      break;
-    case 'blog':
-      routeTree = sidebarBlog;
-      break;
   }
   return (
     <Page
@@ -53,7 +44,7 @@ export default function Layout({content, toc, meta, languages}) {
 }
 
 function useActiveSection() {
-  const {asPath} = useRouter();
+  const { asPath } = useRouter();
   const cleanedPath = asPath.split(/[\?\#]/)[0];
   if (cleanedPath === '/') {
     return 'home';
@@ -61,10 +52,6 @@ function useActiveSection() {
     return 'reference';
   } else if (asPath.startsWith('/learn')) {
     return 'learn';
-  } else if (asPath.startsWith('/community')) {
-    return 'community';
-  } else if (asPath.startsWith('/blog')) {
-    return 'blog';
   } else {
     return 'unknown';
   }
@@ -82,7 +69,7 @@ function reviveNodeOnClient(parentPropertyName, val) {
     let props = val[3];
     if (Type === 'wrapper') {
       Type = Fragment;
-      props = {children: props.children};
+      props = { children: props.children };
     }
     if (Type in MDXComponents) {
       Type = MDXComponents[Type];
@@ -99,7 +86,6 @@ function reviveNodeOnClient(parentPropertyName, val) {
 
 // Put MDX output into JSON for client.
 export async function getStaticProps(context) {
-  generateRssFeed();
   const fs = require('fs');
   const rootDir = process.cwd() + '/src/content/';
 
@@ -112,7 +98,7 @@ export async function getStaticProps(context) {
     mdx = fs.readFileSync(rootDir + path + '/index.md', 'utf8');
   }
 
-  const {toc, content, meta, languages} = await compileMDX(mdx, path, {});
+  const { toc, content, meta, languages } = await compileMDX(mdx, path, {});
   return {
     props: {
       toc,
@@ -125,8 +111,8 @@ export async function getStaticProps(context) {
 
 // Collect all MDX files for static generation.
 export async function getStaticPaths() {
-  const {promisify} = require('util');
-  const {resolve} = require('path');
+  const { promisify } = require('util');
+  const { resolve } = require('path');
   const fs = require('fs');
   const readdir = promisify(fs.readdir);
   const stat = promisify(fs.stat);
