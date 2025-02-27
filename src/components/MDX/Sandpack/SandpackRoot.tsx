@@ -2,14 +2,14 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {Children} from 'react';
+import { Children } from 'react';
 import * as React from 'react';
-import {SandpackProvider} from '@codesandbox/sandpack-react/unstyled';
-import {SandpackLogLevel} from '@codesandbox/sandpack-client';
-import {CustomPreset} from './CustomPreset';
-import {createFileMap} from './createFileMap';
-import {CustomTheme} from './Themes';
-import {template} from './template';
+import { SandpackProvider } from '@codesandbox/sandpack-react/unstyled';
+import { SandpackLogLevel } from '@codesandbox/sandpack-client';
+import { CustomPreset } from './CustomPreset';
+import { createFileMap } from './createFileMap';
+import { CustomTheme } from './Themes';
+import { template } from './template';
 
 type SandpackProps = {
   children: React.ReactNode;
@@ -67,14 +67,14 @@ ul {
 `.trim();
 
 function SandpackRoot(props: SandpackProps) {
-  let {children, autorun = true} = props;
+  let { children, autorun = true } = props;
   const codeSnippets = Children.toArray(children) as React.ReactElement[];
   const files = createFileMap(codeSnippets);
 
   if ('/index.html' in files) {
     throw new Error(
       'You cannot use `index.html` file in sandboxes. ' +
-        'Only `public/index.html` is respected by Sandpack and CodeSandbox (where forks are created).'
+      'Only `public/index.html` is respected by Sandpack and CodeSandbox (where forks are created).'
     );
   }
 
@@ -86,7 +86,7 @@ function SandpackRoot(props: SandpackProps) {
   return (
     <div className="sandpack sandpack--playground w-full my-8" dir="ltr">
       <SandpackProvider
-        files={{...template, ...files}}
+        files={{ ...template, ...files }}
         theme={CustomTheme}
         customSetup={{
           environment: 'create-react-app',
@@ -94,8 +94,8 @@ function SandpackRoot(props: SandpackProps) {
         options={{
           autorun,
           initMode: 'user-visible',
-          initModeObserverOptions: {rootMargin: '1400px 0px'},
-          bundlerURL: 'https://786946de.sandpack-bundler-4bw.pages.dev',
+          initModeObserverOptions: { rootMargin: '1400px 0px' },
+          bundlerURL: 'https://sandpack-bundler.codesandbox.io',
           logLevel: SandpackLogLevel.None,
         }}>
         <CustomPreset providedFiles={Object.keys(files)} />

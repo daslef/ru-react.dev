@@ -319,13 +319,13 @@ export default function TopNav({
             <div className="text-base justify-center items-center gap-1.5 flex 3xl:flex-1 flex-row 3xl:justify-end">
               <div className="mx-2.5 gap-1.5 hidden lg:flex">
                 <NavItem isActive={section === 'learn'} url="/learn">
-                  Learn
+                  Обучение
                 </NavItem>
-                <NavItem
+                {/* <NavItem
                   isActive={section === 'reference'}
                   url="/reference/react">
-                  Reference
-                </NavItem>
+                  Справочник
+                </NavItem> */}
               </div>
               <div className="flex w-full md:hidden"></div>
               <div className="flex items-center -space-x-2.5 xs:space-x-0 ">

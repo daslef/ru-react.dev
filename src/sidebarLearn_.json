@@ -1,0 +1,220 @@
+{
+  "title": "Изучение React",
+  "path": "/learn",
+  "routes": [
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "ПЕРВЫЕ ШАГИ"
+    },
+    {
+      "title": "Быстрый старт",
+      "path": "/learn",
+      "routes": [
+        {
+          "title": "Проект: Крестики-нолики",
+          "path": "/learn/tutorial-tic-tac-toe"
+        },
+        {
+          "title": "React-мышление",
+          "path": "/learn/thinking-in-react"
+        }
+      ]
+    },
+    {
+      "title": "Установка",
+      "path": "/learn/installation",
+      "routes": [
+        {
+          "title": "Создание React-приложения",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Создание React-приложения с нуля",
+          "path": "/learn/build-a-react-app-from-scratch"
+        },
+        {
+          "title": "Добавление React в существующий проект",
+          "path": "/learn/add-react-to-an-existing-project"
+        }
+      ]
+    },
+    {
+      "title": "Настройка",
+      "path": "/learn/setup",
+      "routes": [
+        {
+          "title": "Настройка редактора",
+          "path": "/learn/editor-setup"
+        },
+        {
+          "title": "Использование TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
+          "title": "React Developer Tools",
+          "path": "/learn/react-developer-tools"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "ИЗУЧЕНИЕ REACT"
+    },
+    {
+      "title": "Описываем UI",
+      "tags": [],
+      "path": "/learn/describing-the-ui",
+      "routes": [
+        {
+          "title": "Твой первый компонент",
+          "path": "/learn/your-first-component"
+        },
+        {
+          "title": "Импорт и экспорт компонентов",
+          "path": "/learn/importing-and-exporting-components"
+        },
+        {
+          "title": "Создание разметки с JSX",
+          "path": "/learn/writing-markup-with-jsx"
+        },
+        {
+          "title": "JavaScript в JSX",
+          "path": "/learn/javascript-in-jsx-with-curly-braces"
+        },
+        {
+          "title": "Передача пропсов в компонент",
+          "path": "/learn/passing-props-to-a-component"
+        },
+        {
+          "title": "Условный рендеринг",
+          "path": "/learn/conditional-rendering"
+        },
+        {
+          "title": "Рендеринг списков",
+          "path": "/learn/rendering-lists"
+        },
+        {
+          "title": "Чистота компонентов",
+          "path": "/learn/keeping-components-pure"
+        },
+        {
+          "title": "Дерево UI",
+          "path": "/learn/understanding-your-ui-as-a-tree"
+        }
+      ]
+    },
+    {
+      "title": "Добавляем интерактивность",
+      "path": "/learn/adding-interactivity",
+      "tags": [],
+      "routes": [
+        {
+          "title": "Реагируем на события",
+          "path": "/learn/responding-to-events"
+        },
+        {
+          "title": "Стейт: память компонента",
+          "path": "/learn/state-a-components-memory"
+        },
+        {
+          "title": "Render and Commit",
+          "path": "/learn/render-and-commit"
+        },
+        {
+          "title": "Стейт как Snapshot",
+          "path": "/learn/state-as-a-snapshot"
+        },
+        {
+          "title": "Queueing серий обновлений стейта",
+          "path": "/learn/queueing-a-series-of-state-updates"
+        },
+        {
+          "title": "Обновление объектов в стейте",
+          "path": "/learn/updating-objects-in-state"
+        },
+        {
+          "title": "Обновление массивов в стейте",
+          "path": "/learn/updating-arrays-in-state"
+        }
+      ]
+    },
+    {
+      "title": "Управляем состоянием",
+      "path": "/learn/managing-state",
+      "tags": [
+        "intermediate"
+      ],
+      "routes": [
+        {
+          "title": "Реагируем на ввод с помощью стейта",
+          "path": "/learn/reacting-to-input-with-state"
+        },
+        {
+          "title": "Выбор структуры стейта",
+          "path": "/learn/choosing-the-state-structure"
+        },
+        {
+          "title": "Шеринг стейта между компонентами",
+          "path": "/learn/sharing-state-between-components"
+        },
+        {
+          "title": "Сохранение и сброс стейта",
+          "path": "/learn/preserving-and-resetting-state"
+        },
+        {
+          "title": "Рефакторинг логики стейта с Reducer",
+          "path": "/learn/extracting-state-logic-into-a-reducer"
+        },
+        {
+          "title": "Глубокая передача данных с Context",
+          "path": "/learn/passing-data-deeply-with-context"
+        },
+        {
+          "title": "Масштабируемся с Reducer и Context",
+          "path": "/learn/scaling-up-with-reducer-and-context"
+        }
+      ]
+    },
+    {
+      "title": "Избегаем ловушки",
+      "path": "/learn/escape-hatches",
+      "tags": [
+        "advanced"
+      ],
+      "routes": [
+        {
+          "title": "Использование Refs",
+          "path": "/learn/referencing-values-with-refs"
+        },
+        {
+          "title": "Манипуляции с DOM через Refs",
+          "path": "/learn/manipulating-the-dom-with-refs"
+        },
+        {
+          "title": "Синхронизация через эффекты",
+          "path": "/learn/synchronizing-with-effects"
+        },
+        {
+          "title": "Случаи, когда эффекты не нужны",
+          "path": "/learn/you-might-not-need-an-effect"
+        },
+        {
+          "title": "Жизненный цикл реактивных эффектов",
+          "path": "/learn/lifecycle-of-reactive-effects"
+        },
+        {
+          "title": "Отделение событий от эффектов",
+          "path": "/learn/separating-events-from-effects"
+        },
+        {
+          "title": "Удаление зависимостей эффектов",
+          "path": "/learn/removing-effect-dependencies"
+        },
+        {
+          "title": "Переиспользование логики с кастомными хуками",
+          "path": "/learn/reusing-logic-with-custom-hooks"
+        }
+      ]
+    }
+  ]
+}

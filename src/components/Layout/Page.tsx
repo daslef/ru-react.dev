@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { SidebarNav } from './SidebarNav';
 import { Footer } from './Footer';
 import { Toc } from './Toc';
-// import SocialBanner from '../SocialBanner';
 import { DocsPageFooter } from 'components/DocsFooter';
 import PageHeading from 'components/PageHeading';
 import { getRouteMeta } from './getRouteMeta';

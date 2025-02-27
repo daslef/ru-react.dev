@@ -1,24 +1,20 @@
 ---
-title: Setup
+title: Настройка
 ---
 <Intro>
 
-React integrates with tools like editors, TypeScript, browser extensions, and compilers. This section will help you get your environment set up.
+Для комфортной работы рекомендуем настроить рабочее окружение и тулинг. В этом разделе мы сделаем первые шаги в этом направлении.
 
 </Intro>
 
-## Editor Setup {/*editor-setup*/}
+## Настройка редактора {/*editor-setup*/}
 
-See our [recommended editors](/learn/editor-setup) and learn how to set them up to work with React.
+Ознакомься со списком [рекомендуемых редакторов](/learn/editor-setup) и изучи, как настроить их под React.
 
-## Using TypeScript {/*using-typescript*/}
+## Использование TypeScript {/*using-typescript*/}
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. [Learn how to integrate TypeScript into your React projects](/learn/typescript).
+TypeScript - популярное решение для добавления типизации в кодовые базы JavaScript. В [соответствующем разделе](/learn/typescript) мы объясняем, как добавить TypeScript к проекту на React.
 
-## React Developer Tools {/*react-developer-tools*/}
+## React DevTools {/*react-developer-tools*/}
 
-React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](learn/react-developer-tools).
-
-## Next steps {/*next-steps*/}
-
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+[React Developer Tools](learn/react-developer-tools) - расширение для браузера, которое позволяет инспектировать React-компоненты, редактировать пропсы и стейт компонентов, идентифицировать проблемы с производительностью.

@@ -1,31 +1,12 @@
 ---
-title: 'Tutorial: Tic-Tac-Toe'
+title: 'Проект: Крестики-нолики'
 ---
 
 <Intro>
 
-You will build a small tic-tac-toe game during this tutorial. This tutorial does not assume any existing React knowledge. The techniques you'll learn in the tutorial are fundamental to building any React app, and fully understanding it will give you a deep understanding of React.
+По итогам этого тюториала мы создадим небольшую игру, но техники, которые мы используем по ходу ее разработки, являются фундаментальными для любого приложения на React. 
 
 </Intro>
-
-<Note>
-
-This tutorial is designed for people who prefer to **learn by doing** and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI.](/learn/describing-the-ui)
-
-</Note>
-
-The tutorial is divided into several sections:
-
-- [Setup for the tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-- [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-- [Completing the game](#completing-the-game) will teach you **the most common techniques** in React development.
-- [Adding time travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
-
-### What are you building? {/*what-are-you-building*/}
-
-In this tutorial, you'll build an interactive tic-tac-toe game with React.
-
-You can see what it will look like when you're finished here:
 
 <Sandpack>
 
@@ -194,15 +175,13 @@ body {
 
 </Sandpack>
 
-If the code doesn't make sense to you yet, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+Рекомендуем сыграть несколько игр, чтобы разобраться в функционале. Например, интересная особенность здесь в том, что реализована история всех ходов. 
 
-We recommend that you check out the tic-tac-toe game above before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
+Если код кажется непонятным, это нормально - в ходе работы мы пошагово разберем все концепции.
 
-Once you've played around with the finished tic-tac-toe game, keep scrolling. You'll start with a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+## Настройка окружения {/*setup-for-the-tutorial*/}
 
-## Setup for the tutorial {/*setup-for-the-tutorial*/}
-
-In the live code editor below, click **Fork** in the top-right corner to open the editor in a new tab using the website CodeSandbox. CodeSandbox lets you write code in your browser and preview how your users will see the app you've created. The new tab should display an empty square and the starter code for this tutorial.
+Ты можешь вести работу в браузере на платформе CodeSandbox, сделав **форк** кнопкой в правом верхнем углу.
 
 <Sandpack>
 
@@ -259,47 +238,23 @@ body {
 
 </Sandpack>
 
-<Note>
+Как альтернативу, можно использовать локальное окружение разработки. Для этого:
 
-You can also follow this tutorial using your local development environment. To do this, you need to:
+1. Установи [Node.js](https://nodejs.org/en/)
+2. Скачай исходники с CodeSandbox
+3. Распакуй архив, открой директорию в редакторе
+4. Установи зависимости через `npm install`
+5. Запусти `npm start` для старта локального сервера и открой его в браузере
 
-1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
-1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
-1. Install the dependencies with `npm install`
-1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+## Базовая реализация {/*overview*/}
 
-If you get stuck, don't let this stop you! Follow along online instead and try a local setup again later.
+### Изучаем исходники {/*inspecting-the-starter-code*/}
 
-</Note>
-
-## Overview {/*overview*/}
-
-Now that you're set up, let's get an overview of React!
-
-### Inspecting the starter code {/*inspecting-the-starter-code*/}
-
-In CodeSandbox you'll see three main sections:
-
-![CodeSandbox with starter code](../images/tutorial/react-starter-code-codesandbox.png)
-
-1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` and a folder called `public`
-1. The _code editor_ where you'll see the source code of your selected file
-1. The _browser_ section where you'll see how the code you've written will be displayed
-
-The `App.js` file should be selected in the _Files_ section. The contents of that file in the _code editor_ should be:
-
-```jsx
-export default function Square() {
-  return <button className="square">X</button>;
-}
-```
-
-The _browser_ section should be displaying a square with an X in it like this:
+На старте в браузере должен отображаться квадрат с символом X:
 
 ![x-filled square](../images/tutorial/x-filled-square.png)
 
-Now let's have a look at the files in the starter code.
+Теперь рассмотрим исходники.
 
 #### `App.js` {/*appjs*/}
 

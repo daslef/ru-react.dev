@@ -7,11 +7,11 @@
       "sectionHeader": "react@{{version}}"
     },
     {
-      "title": "Overview",
+      "title": "Обзор",
       "path": "/reference/react"
     },
     {
-      "title": "Hooks",
+      "title": "Хуки",
       "path": "/reference/react/hooks",
       "routes": [
         {
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "Компоненты",
       "path": "/reference/react/components",
       "routes": [
         {
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react/apis",
       "routes": [
         {
@@ -160,7 +160,7 @@
       "sectionHeader": "react-dom@{{version}}"
     },
     {
-      "title": "Hooks",
+      "title": "Хуки",
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
@@ -170,7 +170,7 @@
       ]
     },
     {
-      "title": "Components",
+      "title": "Компоненты",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -224,7 +224,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom",
       "routes": [
         {
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "title": "Client APIs",
+      "title": "Клиентские API",
       "path": "/reference/react-dom/client",
       "routes": [
         {
@@ -276,7 +276,7 @@
       ]
     },
     {
-      "title": "Server APIs",
+      "title": "Серверные API",
       "path": "/reference/react-dom/server",
       "routes": [
         {
@@ -298,7 +298,7 @@
       ]
     },
     {
-      "title": "Static APIs",
+      "title": "Статические API",
       "path": "/reference/react-dom/static",
       "routes": [
         {
@@ -316,11 +316,11 @@
       "sectionHeader": "Rules of React"
     },
     {
-      "title": "Overview",
+      "title": "Обзор",
       "path": "/reference/rules",
       "routes": [
         {
-          "title": "Components and Hooks must be pure",
+          "title": "Чистота хуков и компонентов",
           "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {
@@ -328,25 +328,25 @@
           "path": "/reference/rules/react-calls-components-and-hooks"
         },
         {
-          "title": "Rules of Hooks",
+          "title": "Правила хуков",
           "path": "/reference/rules/rules-of-hooks"
         }
       ]
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React Server Components"
+      "sectionHeader": "Серверные компоненты (RSC)"
     },
     {
-      "title": "Server Components",
+      "title": "Серверные компоненты",
       "path": "/reference/rsc/server-components"
     },
     {
-      "title": "Server Functions",
+      "title": "Серверные функции",
       "path": "/reference/rsc/server-functions"
     },
     {
-      "title": "Directives",
+      "title": "Директивы",
       "path": "/reference/rsc/directives",
       "routes": [
         {
@@ -361,10 +361,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
+      "sectionHeader": "Legacy API"
     },
     {
-      "title": "Legacy React APIs",
+      "title": "Legacy React API",
       "path": "/reference/react/legacy",
       "routes": [
         {
